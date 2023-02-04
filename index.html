@@ -1,27 +1,32 @@
-<html>
-  <head>
-    <script>
-      const video = document.querySelector("#video");
-      const canvas = document.querySelector("#canvas");
-      const context = canvas.getContext("2d");
-      const captureButton = document.querySelector("#capture");
-  
-      navigator.mediaDevices
-        .getUserMedia({ video: true })
-        .then(function(stream) {
-          video.srcObject = stream;
-          video.play();
-        });
-  
-      captureButton.addEventListener("click", function() {
-        context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      });
-    </script>
-  </head>
-  <body>
-    <video id="video" width="640" height="480"></video>
-    <canvas id="canvas" width="640" height="480"></canvas>
-    <br>
-    <button id="capture">Capture Image</button>
-  </body>
-</html>
+<!-- HTML -->
+<video id="video" width="640" height="480"></video>
+<br>
+<button id="capture">Capture Image</button>
+<br>
+<canvas id="canvas" width="640" height="480"></canvas>
+
+<!-- CSS -->
+<style>
+  canvas {
+    border: 1px solid black;
+  }
+</style>
+
+<!-- JavaScript -->
+<script>
+  const video = document.querySelector("#video");
+  const canvas = document.querySelector("#canvas");
+  const context = canvas.getContext("2d");
+  const captureButton = document.querySelector("#capture");
+
+  navigator.mediaDevices
+    .getUserMedia({ video: true })
+    .then(function(stream) {
+      video.srcObject = stream;
+      video.play();
+    });
+
+  captureButton.addEventListener("click", function() {
+    context.drawImage(video, 0, 0, canvas.width, canvas.height);
+  });
+</script>
